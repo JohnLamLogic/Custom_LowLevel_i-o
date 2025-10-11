@@ -1,3 +1,15 @@
+IIIIIIIIIII     O          OOOOOOOOOOO
+     I          I         O         O
+     I           O        O         O
+     I            I       O         O
+     I             O      O         O
+     I              I     O         O
+     I               O    O         O
+     I                I   O         O
+     I                 O  O         O
+     I                  I O         O
+IIIIIIIIIII               OOOOOOOOOOO
+
 ````markdown
 MIO(3) — Library Functions — MIO(3)
 ===================================
