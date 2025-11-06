@@ -9,7 +9,7 @@ MIO *mioerr;
 void myinit()
 {
     mioin = mydopen(STDIN_FILENO, MODE_R, MBSIZE);
-    mioout = mydopen(STDOUT_FILENO, MODE_WA, 0);
+    mioout = mydopen(STDOUT_FILENO, MODE_WA, MBSIZE);
     mioerr = mydopen(STDERR_FILENO, MODE_WA, 0);
 }
 
@@ -461,32 +461,15 @@ char *mygetline(MIO *m, int *len)
 
     while (1)
     {
+
         if (mygetc(m, &c) != 1)
         {
             if (i == 0)
             {
-                free(buf);
-                return NULL;
+              free(buf);
+              return NULL;
             }
-            break;
-        }
 
-        if (c == '\n' || c == '\r')
-        {
-            if (c == '\r')
-            {
-                char next;
-                if (mygetc(m, &next) == 1)
-                {
-                    if (next != '\n')
-                    {
-                        if (m->rsize > 0 && m->rb && m->rs > 0)
-                        {
-                            m->rs--;
-                        }
-                    }
-                }
-            }
             break;
         }
 
@@ -503,6 +486,11 @@ char *mygetline(MIO *m, int *len)
         }
 
         buf[i++] = c;
+
+        if ( c == '\n')
+        {
+          break;
+        }
     }
 
     buf[i] = '\0';
