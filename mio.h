@@ -7,7 +7,6 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 
-#include "dprint.h"
 
 // Defined Constants
 #define MBSIZE 10       // default size for buffers
